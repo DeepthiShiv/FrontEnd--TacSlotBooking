@@ -1,0 +1,249 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:#eef2f6;
+    display: flex;
+    flex-direction: column;
+}
+
+.landing-page {
+    display: flex;
+    min-height: 100vh;
+    background-color: #eef2f6; 
+}
+
+.side {
+    width: 250px;
+    background-color: #232836;
+    color: #ffffff;
+    height: 100vh;
+    padding-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.side.hidden {
+    transform: translateX(-100%);
+}
+
+.side .logo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.side nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side nav ul li {
+    margin-bottom: 20px;
+}
+
+.side nav ul li a, .side nav ul li .logout-button {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    padding-left: 20px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.side nav ul li a:hover {
+    background-color: #0171d3;
+    color:#ffffff
+}
+
+.logout-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
+    padding-left: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+    flex-grow: 1;
+    background-color: #f9f9f9;
+    transition: margin-left 0.3s ease;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #232836;
+    margin: 0;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile span {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #232836;
+}
+
+.user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.active-slots-container {
+    margin-top: 40px;
+}
+
+.active-slots-container h2 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #232836;
+    margin-bottom: 20px;
+}
+
+.slots-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.slots-table th, .slots-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.slots-table th {
+    background-color: #0171d3;
+    color: #fff;
+}
+
+.slots-table td {
+    color: #232836;
+    
+}
+
+.book-button a {
+    display: block;
+    padding: 10px 15px;
+    background-color: #0171d3;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.book-button a:hover {
+    background-color: #0160b3;
+    transform: translateY(-2px);
+}
+.confirm-button {
+    background-color: #0171d3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.confirm-button:hover {
+    background-color: #0160b3;
+}
+
+
+.edit-icon {
+    margin-left: 10px;
+    cursor: pointer;
+    color: #0171d3;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.edit-icon.disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.edit-icon:hover:not(.disabled) {
+    color: #0160b3;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 50px;
+    color: #8b8b8b;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    .main-content {
+        margin-left: 0;
+        padding: 10px; /* Added padding for smaller screens */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .side {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 200px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .side {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .side-toggle {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        background-color: #232836;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .side.hidden + .main-content {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,202 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-color:#eef2f6; */
+    /* background-color:  */
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #232836;
+    color: #ffffff;
+    height: 100vh;
+    padding-top: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+
+.sidebar .logo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 20px;
+}
+
+.sidebar nav ul li a, .sidebar nav ul li .logout-button {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    padding-left: 20px;
+    display: block;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar nav ul li a:hover {
+    /* background-color: #1f2122; */
+    /* color:#ffffff */
+    color:#0171d3;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header .user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.header .user-profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.slots-list {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.slots-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 0.5px;
+}
+
+.slots-table th, .slots-table td {
+    padding: 10px;
+    text-align: left;
+    /* border-bottom: 1px solid #3c3c3c; */
+}
+
+.slots-table th {
+    /* background-color: #0171d3; */
+    background-color: #232836;
+}
+
+.book-button {
+    background-color: #0171d3;
+    color: #f0f0f0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.book-button:disabled {
+    background-color: grey;
+}
+
+.confirmation-message {
+    background-color: #a8ec9c;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+/* For Tablets (768px and below) */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        margin-left: 220px;
+        padding: 15px;
+    }
+
+    .header .user-profile img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .slots-table th, .slots-table td {
+        padding: 8px;
+    }
+
+    .book-button {
+        padding: 6px 10px;
+    }
+}
+
+/* For Small Screens (600px and below) */
+@media (max-width: 600px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .slots-table th, .slots-table td {
+        padding: 6px;
+        font-size: 0.9rem;
+    }
+
+    .book-button {
+        padding: 5px 8px;
+    }
+}
+
+/* For Extra Small Screens (400px and below) */
+@media (max-width: 400px) {
+    .sidebar .logo {
+        font-size: 1.2rem;
+    }
+
+    .header {
+        align-items: flex-start;
+    }
+
+    .slots-table th, .slots-table td {
+        padding: 4px;
+        font-size: 0.8rem;
+    }
+
+    .book-button {
+        padding: 4px 6px;
+        font-size: 0.9rem;
+    }
+}
