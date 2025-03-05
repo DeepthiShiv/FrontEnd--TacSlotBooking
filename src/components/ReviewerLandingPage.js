@@ -12,13 +12,40 @@ const availableSlots = [
 export default function ReviewerLandingPage() {
     const [slots, setSlots] = useState([]);
     const [bookedSlot, setBookedSlot] = useState(null);
+    const [confirmation, setConfirmation] = useState(''); // State for confirmation message
 
     useEffect(() => {
         setSlots(availableSlots);
     }, []);
 
-    const handleBookSlot = (slot) => {
-        setBookedSlot(slot);
+    // Handle booking a slot
+    const handleBookSlot = async (slot) => {
+        try {
+            const response = await fetch('http://localhost:8080/api/reviewer-bookings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    reviewerId: 'REV123', // Replace with the actual reviewer ID
+                    slotDate: slot.date,
+                    slotTime: slot.time,
+                }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                setConfirmation(`You have booked the slot on ${slot.date} at ${slot.time}`);
+                setBookedSlot(slot); // Set the booked slot
+            } else {
+                const errorData = await response.json();
+                console.error('Failed to book slot:', errorData);
+                alert(`Error: ${errorData.message || 'Failed to book slot'}`);
+            }
+        } catch (error) {
+            console.error('Error booking slot:', error);
+            alert('An error occurred while booking the slot.');
+        }
     };
 
     return (
@@ -83,4 +110,3 @@ export default function ReviewerLandingPage() {
         </div>
     );
 }
-
