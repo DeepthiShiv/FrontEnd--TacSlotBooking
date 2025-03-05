@@ -16,10 +16,9 @@ function App() {
         
       <Route path="/reviewer-landing" element={<ReviewerLandingPage />} /> 
                 
-      {/* <Route path="/admin" element={<AdminPage />} /> */}
+      <Route path="/admin" element={<AdminPage />} />
        </Routes>
      </Router>
-    
     
   );
 }
