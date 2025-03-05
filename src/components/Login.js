@@ -12,19 +12,35 @@ export default function StudentLogin() {
     const [showSignup, setShowSignup] = useState(false);
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        if (email.includes('@bitsathy.ac.in')) {
-            if (email.match(/\.[a-z]{2}[0-9]{2}@bitsathy\.ac\.in$/)) {
-                navigate('/student-landing');
+    
+        try {
+            const response = await fetch("http://localhost:8080/api/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+            });
+    
+            if (response.ok) {
+                const message = await response.text();
+                alert(message);
+                if (message.includes("Student")) {
+                    navigate("/student-landing");
+                } else if (message.includes("Reviewer")) {
+                    navigate("/reviewer-landing");
+                }
             } else {
-                navigate('/reviewer-landing');
+                const error = await response.text();
+                alert(error);
             }
-        } else {
-            alert('Invalid email address');
+        } catch (err) {
+            alert("Error connecting to the server. Please try again later.");
         }
     };
-
+    
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
